@@ -76,8 +76,8 @@ let tilt_angle = 0;
 function frame() {
     const dt = 1/FPS;
     // dz += 1*dt;
-    spin_angle = Math.PI*dt;
-    tilt_angle = Math.PI*dt;
+    spin_angle += Math.PI*dt;
+    tilt_angle += Math.PI*dt;
 
     clear()
     // for (const v of vs) {

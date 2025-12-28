@@ -1,8 +1,23 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <fstream>
 #include "converter.cpp"
 
 using namespace std;
+
+void writeJSON(vector<vector<float>>& vs,const string& path) {
+  ofstream out(path, std::ios::trunc);
+
+  out << "[\n";
+  for(int i = 0; i < vs.size(); i++) {
+    out << " [" << vs[i][0] << ", " << vs[i][1] << ", " << vs[i][2] << "]";
+    if(i + 1 < vs.size()) out << ", ";
+    out << "\n";
+  }
+
+  out << "]\n";
+}
 
 int main(void) {
 
@@ -34,5 +49,7 @@ int main(void) {
     poly.emplace_back(c.convert(input));
   }
 
+  writeJSON(poly, "points.json");
+  system("python3 generator.py");
   return 0;
 }
