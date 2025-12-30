@@ -6,8 +6,6 @@
 This is a **learning project**, not a game engine 😄  
 The goal is to understand **3D math + rendering from scratch**, without WebGL, Three.js, or magic.
 
-I’m building this as a **BTech 3rd year** student to really *see* how 3D works.
-
 ---
 
 ## What this project does 🧠
