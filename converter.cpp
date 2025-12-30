@@ -7,18 +7,24 @@ using namespace std;
 
 class Convert {
   public:
-    vector<float> convert (vector<int> coods) {
-      vector<float> res;
-      int lar = coods[0];
+    vector<double> convert (vector<int> coods) {
+      vector<double> res;
+      res.reserve(coods.size());
 
-      for(auto i : coods) {
-        if (i > lar) {
-          lar = i;
-        }
+      int maxAbs = 0;
+      for(int v : coods) {
+        maxAbs = max(maxAbs, abs(v));
       }
 
+      if(maxAbs == 0) {
+        res.assign(coods.size(), 0.0f);
+        return res;
+      }
+
+      const double scale = MAX_RADIUS / static_cast<float>(maxAbs);
+      
       for(auto i : coods) {
-        res.push_back(static_cast<float>(static_cast<double>(i) * (MAX_RADIUS / static_cast<double>(lar))));
+        res.push_back(static_cast<double>(i) * scale);
       }
 
       return res;

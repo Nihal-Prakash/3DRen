@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void writeJSON(vector<vector<float>>& vs,const string& path) {
+void writeJSON(vector<vector<double>>& vs,const string& path) {
   ofstream out(path, std::ios::trunc);
 
   out << "[\n";
@@ -21,8 +21,7 @@ void writeJSON(vector<vector<float>>& vs,const string& path) {
 
 int main(void) {
 
-  vector<vector<float>> poly;
-  vector<int> input;
+  vector<vector<double>> poly;
   int points {0};
   Convert c;
 
@@ -42,10 +41,7 @@ int main(void) {
     cout << "Z: ";
     cin >> z;
 
-    input.emplace_back(x);
-    input.emplace_back(y);
-    input.emplace_back(z);
-
+    vector<int> input = {x, y, z};
     poly.emplace_back(c.convert(input));
   }
 
